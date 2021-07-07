@@ -1,0 +1,44 @@
+<!DOCTYPE html>   
+<html>   
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title> Registration Page </title> 
+<style>
+    input, button, select{
+    width: 200px;
+    padding: 10px 10px;
+    margin: 10px 0;
+    position: relative;
+    left: -50px;
+    top: 50px;
+    border-radius: 5px;
+}
+    select
+    {
+        width: 225px;
+    }
+</style>
+</head>    
+<body style="background-color: yellow; background-image: url('./bg.jpg'); background-size: 65% 100%; background-repeat: no-repeat; background-attachment: fixed;">    
+    <h1 style="position: absolute; left: 450px; color: white;"> Patient Registration</h1>
+    <div home style="float: right; width: 25%;">
+    <form action="./reg_patient.jsp" method="post">   
+            <input type="text" placeholder="Enter First Name" name="first_name" required>  <br> 
+            <input type="text" placeholder="Enter Last Name" name="last_name"> <br>
+            <input type="number" name="age" min="1" max="120" placeholder="Select Your Age">  <br>
+            <select name="gender">
+            	<option value="" disabled selected>Select Your Gender</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+                <option value="O">Others</option>
+            </select> <br>
+            <input type="text" placeholder="Enter Street Name" name="street_name"> <br>
+            <input type="text" placeholder="Enter City" name="city_name" required>  <br>
+            <input type="text" placeholder="Enter State" name="state_name" required> <br>
+            <input type="text" placeholder="Enter PINCODE" name="pin" required>  <br>
+            <input type="password" placeholder="Enter Password" name="password" required>  <br>
+            <button type="submit">Register</button>    
+    </form>     
+    </div>
+</body>     
+</html>  

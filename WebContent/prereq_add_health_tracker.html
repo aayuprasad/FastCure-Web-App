@@ -1,0 +1,34 @@
+<!DOCTYPE html>   
+<html>   
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title> Add Health Tracker </title> 
+<style>
+    input, button, select{
+    width: 200px;
+    padding: 10px 10px;
+    margin: 5px 0;
+    position: relative;
+    left: -50px;
+    top: 10px;
+    border-radius: 5px;
+}
+    select
+    {
+        width: 225px;
+    }
+</style>
+</head>    
+<body style="background-color: yellow; background-image: url('./bg.jpg'); background-size: 100% 100%; background-repeat: no-repeat; background-attachment: fixed;">    
+    <h1 style="position: absolute; left: 450px; color: white;">Before Booking, Add Health Tracker Info </h1>
+    <div home style="float: right; width: 25%;"> 
+    <form action="./prereq_add_health_tracker.jsp"> 
+            <input type="text" placeholder="Enter BP" name="bp">  <br>
+            <input type="number" name="osl" min="0" max="100" placeholder="Enter Oxygen Saturation level">  <br>
+            <input type="text" placeholder="Enter Height" name="height"><br>
+            <input type="text" placeholder="Enter Weight" name="weight"> <br>
+            <button type="submit">Submit</button>  
+    </form>     
+    </div>
+</body>     
+</html>  

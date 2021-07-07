@@ -1,0 +1,40 @@
+<!DOCTYPE html>   
+<html>   
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title> Add Record </title> 
+<style>
+    input, button, select{
+    width: 200px;
+    padding: 10px 10px;
+    margin: 5px 0;
+    position: relative;
+    left: -50px;
+    top: 10px;
+    border-radius: 5px;
+}
+    select
+    {
+        width: 225px;
+    }
+</style>
+</head>    
+<body style="background-color: yellow; background-image: url('./bg.jpg'); background-size: 65% 100%; background-repeat: no-repeat; background-attachment: fixed;">    
+    <h1 style="position: absolute; left: 450px; color: white;"> Enter Symptoms </h1>
+    <div home style="float: right; width: 25%;"> 
+    <form action="./health_tracker.jsp"> 
+            <input type="text" placeholder="Enter Symptom Description" name="Symptom Description">  <br>
+            
+            <select class="multiple" name="symptoms" multiple="multiple">
+                <option value="1">fever</option>
+                <option value="2">breathlessness</option>
+                <option value="3">vomiting</option>
+                <option value="4">headache</option>
+                <option value="5">cough</option>
+                <option value="5">fatigue</option>
+            </select>
+            <button type="submit">Submit</button>  
+    </form>     
+    </div>
+</body>     
+</html>  

@@ -1,0 +1,44 @@
+<!DOCTYPE html>   
+<html>   
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title> Home </title> 
+<style>
+    input{
+    width: 200px;
+    padding: 10px 10px;
+    margin: 20px 0;
+    position: relative;
+    left: -200px;
+    top: 100px;
+    border-radius: 5px;
+}
+    marquee
+    {
+        width: 60%;
+        position: relative;
+        top: 500px;
+        font-size: 60px;
+        font-weight: bolder;
+    }
+</style> 
+</head>    
+<body style="background-color: yellow; background-image: url('./bg.jpg'); background-size: 65% 100%; background-repeat: no-repeat; background-attachment: fixed;">    
+    <h1 style="position: absolute; left: 450px; color: white;"> Fast Cure</h1>
+    <div home style="float: right;">
+    <form action="./login_patient.html" method="get">
+        <input type="submit" value="Login as patient" />
+    </form> 
+    <form action="./login_doctor.html" method="get">
+        <input type="submit" value="Login as doctor" />
+    </form>    
+    <form action="./registration_patient.html" method="get">
+        <input type="submit" value="Register as patient" />
+    </form>  
+    <form action="./registration_doctor.html" method="get">
+        <input type="submit" value="Register as doctor" />
+    </form>
+    </div>  
+    <marquee width=100% height=100%>We are always there for you!</marquee>
+</body>     
+</html>  
