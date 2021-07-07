@@ -1,0 +1,166 @@
+CREATE SCHEMA db;
+
+USE db;
+
+CREATE TABLE counter
+(
+	USER VARCHAR(255), 
+    VALUE INT
+);
+
+CREATE TABLE patient 
+(
+	patient_id INT, 
+	first_name VARCHAR(255) NOT NULL, 
+    last_name VARCHAR(255), age INT NOT NULL CHECK(age >= 0 AND age <= 200),
+    gender CHAR NOT NULL CHECK(gender = 'M' OR gender = 'F' OR gender = 'O'),
+    street VARCHAR(255),
+    city VARCHAR(255) NOT NULL,
+    state VARCHAR(255) NOT NULL,
+    pin INT NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    PRIMARY KEY(patient_id)
+);
+
+CREATE TABLE department
+(
+	department_id INT,
+    department_name VARCHAR(255) NOT NULL,
+    hod VARCHAR(255),
+    primary key(department_id)
+);
+
+CREATE TABLE doctor
+(
+	doctor_id INT,
+	first_name VARCHAR(255) NOT NULL,
+	last_name VARCHAR(255),
+	age INT NOT NULL CHECK(age>=0 AND age<=200),
+	gender CHAR NOT NULL CHECK(gender='M' OR gender='F' OR gender='O'),
+	street VARCHAR(255),
+	city VARCHAR(255) NOT NULL,
+	state VARCHAR(255) NOT NULL,
+	pin INT NOT NULL,
+    department_id INT,
+	highest_degree VARCHAR(255) NOT NULL,
+	fees INT NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    PRIMARY KEY(doctor_id),
+    FOREIGN KEY(department_id) REFERENCES department(department_id)
+);
+
+CREATE TABLE patient_health_tracker 
+(
+	patient_id INT NOT NULL,
+    time_stamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    bp INT,
+    oxygen_saturation_level FLOAT CHECK(oxygen_saturation_level >= 0 AND oxygen_saturation_level <= 100),
+    weight FLOAT,
+    height FLOAT,
+    PRIMARY KEY(patient_id, time_stamp),
+    FOREIGN KEY(patient_id) REFERENCES patient(patient_id)
+);
+
+CREATE TABLE record 
+(
+	record_id INT,
+    patient_id INT NOT NULL,
+    doctor_id INT,
+    symptom_descr VARCHAR(255),
+    prescription VARCHAR(255),
+    rec_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(record_id),
+    FOREIGN KEY(doctor_id) REFERENCES doctor(doctor_id),
+    FOREIGN KEY(patient_id) REFERENCES patient(patient_id)
+);
+
+CREATE TABLE symptom_patient
+(
+	record_id INT,
+    symptom VARCHAR(31),
+    PRIMARY KEY(record_id, symptom),
+    FOREIGN KEY(record_id) REFERENCES record(record_id)
+);
+
+CREATE TABLE symptom_disease
+(
+	disease_id INT,
+    symptom VARCHAR(31),
+    PRIMARY KEY(disease_id, symptom)
+);
+
+CREATE TABLE disease
+(
+	disease_id INT,
+    disease_name VARCHAR(255) NOT NULL,
+    department_id INT,
+    fatality VARCHAR(255),
+    disease_type VARCHAR(255),
+	PRIMARY KEY(disease_id),
+    FOREIGN KEY(department_id) REFERENCES department(department_id)
+);
+
+CREATE TABLE patient_pno
+(
+	patient_id INT NOT NULL,
+    pno CHAR(10) NOT NULL,
+    PRIMARY KEY(patient_id, pno),
+    FOREIGN KEY(patient_id) REFERENCES patient(patient_id)
+);
+
+CREATE TABLE doctor_pno
+(
+	doctor_id INT NOT NULL,
+    pno CHAR(10) NOT NULL,
+    PRIMARY KEY(doctor_id, pno),
+    FOREIGN KEY(doctor_id) REFERENCES doctor(doctor_id)
+);
+
+INSERT INTO counter 
+VALUES ("patient",100);
+
+INSERT INTO counter 
+VALUES ("doctor",100);
+
+insert into counter 
+values ("record", 100);
+
+insert into department values (1,"Kidney","Alpha Bravo");
+insert into department values (2,"Heart","Charlie Delta");
+insert into department values (3,"Lungs","Rocket Boomer");
+insert into department values (4,"Stomach","Aman Singh");
+insert into department values (5,"General","Tom");
+insert into department values (6,"Emergency","Jerry");
+
+insert into disease values (1,"urinary infection",1,20,"bacterial");
+insert into disease values (2,"blood cancer",2,100,"genetic");
+insert into disease values (3,"asthma",3,50,"pollution");
+insert into disease values (4,"common cold",5,0,"viral");
+insert into disease values (5,"diarrhea",4,0,"bacterial");
+insert into disease values (6,"anaemia",5,30,"dietary");
+insert into disease values (7,"corona",6,100,"viral");
+
+insert into symptom_disease values (1,"Fever");
+insert into symptom_disease values (1,"Paleness");
+
+insert into symptom_disease values (2,"Fever");
+insert into symptom_disease values (2,"Paleness");
+insert into symptom_disease values (2,"Chest Pain");
+
+
+insert into symptom_disease values (3,"Chest Pain");
+insert into symptom_disease values (3,"Breathlessness");
+
+insert into symptom_disease values (4,"Cold");
+insert into symptom_disease values (4,"Cough");
+insert into symptom_disease values (4,"Vomiting");
+
+insert into symptom_disease values (5,"Vomiting");
+insert into symptom_disease values (5,"Fever");
+
+insert into symptom_disease values (6,"Headache");
+insert into symptom_disease values (6,"Paleness");
+
+insert into symptom_disease values (7,"Headache");
+insert into symptom_disease values (7,"Cough");
+insert into symptom_disease values (7,"Breathlessness");
